@@ -1,0 +1,17 @@
+<svg width="1280" height="840" viewBox="0 0 1280 840" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F1C34"/>
+      <stop offset="1" stop-color="#1D355A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="840" fill="url(#bg)"/>
+  <rect x="96" y="92" width="1088" height="656" rx="24" fill="#102442" stroke="#71ACFF" stroke-width="8"/>
+  <rect x="190" y="180" width="420" height="220" rx="14" fill="#6CA9FF"/>
+  <rect x="660" y="180" width="430" height="120" rx="14" fill="#396EC0"/>
+  <rect x="660" y="320" width="300" height="80" rx="14" fill="#2D5DA5"/>
+  <path d="M190 560L430 430L620 520L830 380L1090 560" stroke="#9BC5FF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="640" y="700" text-anchor="middle" fill="#E2EEFF" font-family="Arial, sans-serif" font-size="52" font-weight="700">
+    SR Enterprises Work Sample
+  </text>
+</svg>
