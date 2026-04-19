@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <main>
-      <section className="hero fade-in-up">
+      <section className="hero">
         <div className="container">
           <h1>Project Gallery</h1>
           <p className="muted">

@@ -1,23 +1,23 @@
 import Link from "next/link";
 import { ServiceGrid } from "@/components/ServiceGrid";
 import { FeaturedCarousel } from "@/components/FeaturedCarousel";
-import { business } from "@/content/business";
+import { HeroTypedHeadline } from "@/components/HeroTypedHeadline";
+import { ClientLogoCycle } from "@/components/ClientLogoCycle";
 import { Icon } from "@/components/Icon";
 
 export default function HomePage() {
   return (
     <main>
-      <section className="hero fade-in-up">
+      <section className="hero">
         <div className="container">
           <p className="fun-badge">
             <Icon name="spark" className="icon-sm" /> Trusted local fabrication partner
           </p>
-          <h1>Premium Acrylic Fabrication and CNC Cutting in Bangalore</h1>
-          <p className="muted">
-            {business.name} delivers custom acrylic works, UV printing, sign boards,
-            trophies, podiums, and corporate gifting solutions for businesses across Bangalore.
-            From one-piece prototypes to bulk production, we support agencies, retailers, and
-            corporates with practical timelines and reliable quality.
+          <HeroTypedHeadline />
+          <p className="hero-lead muted">
+            Premium acrylic fabrication, CNC cutting, and UV printing in Bangalore — custom
+            displays, signage, trophies, podiums, and corporate gifting with dependable quality
+            and practical timelines.
           </p>
           <p style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
             <Link href="/contact" className="cta">
@@ -29,6 +29,12 @@ export default function HomePage() {
               View Gallery
             </Link>
           </p>
+        </div>
+      </section>
+
+      <section className="clients-strip-section" aria-label="Client brands">
+        <div className="container">
+          <ClientLogoCycle />
         </div>
       </section>
 

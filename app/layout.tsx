@@ -19,7 +19,8 @@ export const metadata: Metadata = {
       "Acrylic fabrication, CNC cutting, UV printing, signage, trophies, podiums, and custom work in Bangalore.",
     url: "https://srenterprises.in",
     siteName: "SR Enterprises",
-    type: "website"
+    type: "website",
+    locale: "en_IN"
   },
   alternates: {
     canonical: "https://srenterprises.in"
@@ -32,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

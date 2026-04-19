@@ -2,17 +2,8 @@
   "version": 3,
   "pages404": true,
   "caseSensitive": false,
-  "basePath": "/sr-enterprises",
+  "basePath": "",
   "redirects": [
-    {
-      "source": "/sr-enterprises/",
-      "destination": "/sr-enterprises",
-      "basePath": false,
-      "internal": true,
-      "priority": true,
-      "statusCode": 308,
-      "regex": "^/sr-enterprises/$"
-    },
     {
       "source": "/:path+/",
       "destination": "/:path+",

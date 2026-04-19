@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main>
-      <section className="hero fade-in-up">
+      <section className="hero">
         <div className="container">
           <h1>Services</h1>
           <p className="muted">

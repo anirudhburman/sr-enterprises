@@ -1,12 +1,22 @@
 import type { NextConfig } from "next";
 
+/**
+ * Static export for hosts like Cloudflare Pages / Netlify / a custom domain at `/`.
+ * For GitHub Project Pages (e.g. username.github.io/repo-name/), set env:
+ *   GITHUB_PAGES=true
+ * and uncomment/configure basePath + assetPrefix to match your repo name.
+ */
 const nextConfig: NextConfig = {
-  output: 'export', // Required for GitHub Pages
+  output: "export",
   images: {
-    unoptimized: true, // GitHub Pages doesn't support Next.js Image Optimization
+    unoptimized: true
   },
-  // If your URL is username.github.io/repo-name, add:
-  basePath: '/sr-enterprises',
+  ...(process.env.GITHUB_PAGES === "true"
+    ? {
+        basePath: "/sr-enterprises",
+        assetPrefix: "/sr-enterprises/"
+      }
+    : {})
 };
 
 export default nextConfig;
