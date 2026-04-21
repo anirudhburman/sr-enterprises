@@ -1,11 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import Image from "next/image";
-import { projects } from "@/content/projects";
 import { Reveal } from "@/components/Reveal";
-
-const categories = ["All", "Acrylic", "Signage", "Trophies", "UV Printing", "Podiums"] as const;
+import { useProjectFilter } from "@/hooks/useProjectFilter";
 
 const imageDims = {
   landscape: { width: 1200, height: 900 },
@@ -14,14 +11,7 @@ const imageDims = {
 } as const;
 
 export function MasonryProjectGrid() {
-  const [active, setActive] = useState<(typeof categories)[number]>("All");
-
-  const filtered = useMemo(() => {
-    if (active === "All") {
-      return projects;
-    }
-    return projects.filter((item) => item.category === active);
-  }, [active]);
+  const { active, setActive, filtered, categories } = useProjectFilter();
 
   return (
     <>

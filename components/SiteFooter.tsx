@@ -6,12 +6,13 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="container">
         <p>
-          <strong>{business.name}</strong> - Acrylic Fabrication, CNC Cutting, UV
-          Printing, Signage, and Trophies in Bangalore.
+          <strong>{business.name}</strong> — Acrylic Fabrication, CNC Cutting, UV Printing,
+          Signage, and Trophies in Bangalore.
         </p>
         <p>
           <Link href="/contact">Contact Us</Link> |{" "}
           <a href={`tel:${business.phone}`}>{business.phone}</a> |{" "}
+          <a href={`tel:${business.phone2}`}>{business.phone2}</a> |{" "}
           <a href={`mailto:${business.email}`}>{business.email}</a>
         </p>
       </div>

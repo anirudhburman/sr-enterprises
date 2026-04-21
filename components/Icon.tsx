@@ -11,7 +11,15 @@ type IconName =
   | "clock"
   | "phone"
   | "mail"
-  | "map";
+  | "map"
+  | "acrylic"
+  | "cnc"
+  | "uvprint"
+  | "signage"
+  | "trophy"
+  | "gift"
+  | "menu"
+  | "close";
 
 type IconProps = {
   name: IconName;
@@ -54,6 +62,22 @@ export function Icon({ name, className = "icon-sm" }: IconProps) {
       return <svg {...common}><rect x="3.5" y="5.5" width="17" height="13" rx="2.2" stroke="currentColor" strokeWidth="1.8" /><path d="M4.7 7L12 12.2L19.3 7" stroke="currentColor" strokeWidth="1.8" /></svg>;
     case "map":
       return <svg {...common}><path d="M12 20C15.7 16.2 18 13.4 18 10.5C18 7 15.3 4.5 12 4.5C8.7 4.5 6 7 6 10.5C6 13.4 8.3 16.2 12 20Z" stroke="currentColor" strokeWidth="1.8" /><circle cx="12" cy="10.5" r="2.1" stroke="currentColor" strokeWidth="1.8" /></svg>;
+    case "acrylic":
+      return <svg {...common}><path d="M12 4L20 8.5V10L12 14.5L4 10V8.5L12 4Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" /><path d="M4 13.5L12 18L20 13.5" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" /></svg>;
+    case "cnc":
+      return <svg {...common}><circle cx="10" cy="10" r="4.5" stroke="currentColor" strokeWidth="1.8" /><path d="M13.5 13.5L19.5 19.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /><path d="M10 7.5V10H12.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+    case "uvprint":
+      return <svg {...common}><rect x="4" y="8.5" width="16" height="9.5" rx="1.5" stroke="currentColor" strokeWidth="1.8" /><path d="M7 8.5V5H17V8.5" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" /><path d="M8 13.5H16M8 16.5H13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /><circle cx="17.5" cy="11.5" r="0.9" fill="currentColor" /></svg>;
+    case "signage":
+      return <svg {...common}><rect x="3" y="3.5" width="18" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.8" /><path d="M12 15.5V20.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /><path d="M7 8H17M7 11H13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>;
+    case "trophy":
+      return <svg {...common}><path d="M8 3H16V11C16 14.2 14.2 17 12 17C9.8 17 8 14.2 8 11V3Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" /><path d="M8 5.5H5.5C5.5 5.5 5.5 10.5 8 10.5M16 5.5H18.5C18.5 5.5 18.5 10.5 16 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /><path d="M12 17V20M9 21H15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>;
+    case "gift":
+      return <svg {...common}><rect x="3" y="9" width="18" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.8" /><path d="M3 9H21V13H3V9Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" /><path d="M12 9V21" stroke="currentColor" strokeWidth="1.8" /><path d="M12 9C12 9 9.5 9 9.5 6.5C9.5 5 10.5 4.2 12 5.5C13.5 4.2 14.5 5 14.5 6.5C14.5 9 12 9 12 9Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" /></svg>;
+    case "menu":
+      return <svg {...common}><path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>;
+    case "close":
+      return <svg {...common}><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>;
     default:
       return <svg {...common}><path d="M12 4V20M4 12H20" stroke="currentColor" strokeWidth="1.8" /></svg>;
   }

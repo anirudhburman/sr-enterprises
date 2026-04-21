@@ -2,10 +2,12 @@ export const business = {
   name: "SR Enterprises",
   shortDescription:
     "Acrylic fabrication, CNC cutting, UV printing, signage, trophies, podiums, and custom display solutions in Bangalore.",
-  phone: "+91 90000 00000",
-  whatsapp: "919000000000",
-  email: "hello@srenterprises.in",
-  address: "No. 00, Industrial Area, Bangalore, Karnataka 560000",
+  phone: "+91 98440 57897",
+  phone2: "+91 90355 16333",
+  whatsapp: "919844057897",
+  email: "srenterprises7897@gmail.com",
+  address: "#22, 2nd Main Road, Hanumanthapura, Srirampura, Bangalore, Karnataka 560021",
+  postalCode: "560021",
   /** Human-readable service area for copy and basic schema text */
   areaServed: "Bangalore Urban, Bangalore Rural, and nearby districts in Karnataka",
   /** Primary city for local SEO */
@@ -13,17 +15,17 @@ export const business = {
   primaryRegion: "Karnataka",
   country: "IN",
   siteUrl: "https://srenterprises.in",
-  mapEmbedUrl: "https://www.google.com/maps?q=Bangalore&output=embed",
+  mapEmbedUrl: "https://maps.google.com/maps?q=%2322+2nd+Main+Road%2C+Hanumanthapura%2C+Srirampura%2C+Bangalore+560021&output=embed",
   social: {
-    instagram: "https://instagram.com/",
-    facebook: "https://facebook.com/"
+    instagram: "https://instagram.com/srenterprises",
+    facebook: "https://facebook.com/srenterprises"
   }
 };
 
-/** Approximate centre of Bengaluru for LocalBusiness / geo signals */
+/** Approximate coordinates for Srirampura, North Bangalore */
 export const businessGeo = {
-  latitude: 12.9716,
-  longitude: 77.5946
+  latitude: 12.9963,
+  longitude: 77.5521
 };
 
 /** Typical pickup / delivery and on-site install radius (km) for GeoCircle */

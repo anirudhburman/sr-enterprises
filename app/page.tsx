@@ -41,14 +41,17 @@ export default function HomePage() {
       <section>
         <div className="container stats-strip">
           <article className="card fade-in-up">
+            <span className="stat-icon"><Icon name="industry" className="icon-md" /></span>
             <h3>500+</h3>
             <p className="muted">Custom fabrication jobs delivered</p>
           </article>
           <article className="card fade-in-up">
-            <h3>24-72h</h3>
+            <span className="stat-icon"><Icon name="clock" className="icon-md" /></span>
+            <h3>24–72h</h3>
             <p className="muted">Fast turnaround on selected jobs</p>
           </article>
           <article className="card fade-in-up">
+            <span className="stat-icon"><Icon name="spark" className="icon-md" /></span>
             <h3>10+</h3>
             <p className="muted">Service categories under one roof</p>
           </article>

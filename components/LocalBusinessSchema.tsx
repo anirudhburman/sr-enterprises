@@ -34,7 +34,7 @@ export function LocalBusinessSchema() {
       streetAddress: business.address,
       addressLocality: business.primaryCity,
       addressRegion: business.primaryRegion,
-      postalCode: "560000",
+      postalCode: business.postalCode,
       addressCountry: business.country
     },
     geo: {
