@@ -435,10 +435,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--ink-2);
   min-height: 120px;
 }
 
@@ -448,6 +444,21 @@ a {
 
 .client-cell:nth-last-child(-n + 4) {
   border-bottom: none;
+}
+
+.client-logo-img {
+  width: auto;
+  height: 80px;
+  max-width: 180px;
+  object-fit: contain;
+  opacity: 0.75;
+  filter: grayscale(1);
+  transition: opacity 0.2s, filter 0.2s;
+}
+
+.client-cell:hover .client-logo-img {
+  opacity: 1;
+  filter: grayscale(0);
 }
 
 /* PROCESS */
@@ -996,6 +1007,11 @@ main {
 
   .client-cell:nth-last-child(-n + 2) {
     border-bottom: none;
+  }
+
+  .client-logo-img {
+    height: 60px;
+    max-width: 140px;
   }
 
   .process-grid {

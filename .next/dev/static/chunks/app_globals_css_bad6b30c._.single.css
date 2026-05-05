@@ -421,14 +421,10 @@ a {
 .client-cell {
   border-right: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
   border-bottom: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
-  letter-spacing: -.01em;
-  color: var(--ink-2);
   justify-content: center;
   align-items: center;
   min-height: 120px;
   padding: 32px 24px;
-  font-size: 24px;
-  font-weight: 700;
   display: flex;
 }
 
@@ -438,6 +434,21 @@ a {
 
 .client-cell:nth-last-child(-n+4) {
   border-bottom: none;
+}
+
+.client-logo-img {
+  object-fit: contain;
+  opacity: .75;
+  filter: grayscale();
+  width: auto;
+  max-width: 180px;
+  height: 80px;
+  transition: opacity .2s, filter .2s;
+}
+
+.client-cell:hover .client-logo-img {
+  opacity: 1;
+  filter: grayscale(0);
 }
 
 .process-grid {
@@ -957,6 +968,11 @@ main {
 
   .client-cell:nth-last-child(-n+2) {
     border-bottom: none;
+  }
+
+  .client-logo-img {
+    max-width: 140px;
+    height: 60px;
   }
 
   .process-grid {

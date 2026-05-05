@@ -1,5 +1,10 @@
 {
   "app": {
+    "[project]/app/_not-found/page": [
+      "static/media/75affa71d1e2f6a7-s.p.51cde8ff.woff2",
+      "static/media/f595ef078a6ec598-s.p.d537d095.woff2",
+      "static/media/051742360c26797e-s.p.102b7f24.woff2"
+    ],
     "[project]/app/about/page": [
       "static/media/75affa71d1e2f6a7-s.p.51cde8ff.woff2",
       "static/media/f595ef078a6ec598-s.p.d537d095.woff2",

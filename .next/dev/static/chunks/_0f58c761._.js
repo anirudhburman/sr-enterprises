@@ -69,14 +69,34 @@ const fabricationServices = [
     "Podiums and display units"
 ];
 const clients = [
-    "Daimler",
-    "Decathlon",
-    "Fischer",
-    "Micelio",
-    "SCG",
-    "Alcon",
-    "Kriya",
-    "Licious"
+    {
+        name: "Daimler",
+        logo: "/images/daimler.png"
+    },
+    {
+        name: "Decathlon",
+        logo: "/images/decathlon.jpg"
+    },
+    {
+        name: "Fischer",
+        logo: "/images/fischer.png"
+    },
+    {
+        name: "Micelio",
+        logo: "/images/micelio.png"
+    },
+    {
+        name: "SCG",
+        logo: "/images/SCG.png"
+    },
+    {
+        name: "Alcon",
+        logo: "/images/alcon.png"
+    },
+    {
+        name: "Licious",
+        logo: "/images/Licious.png"
+    }
 ];
 const processSteps = [
     {
