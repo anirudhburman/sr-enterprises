@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { services } from "@/content/services";
 import { clients, processSteps, testimonials } from "@/content/business";
 import { FaqAccordion } from "@/components/FaqAccordion";
@@ -103,7 +104,16 @@ export default function HomePage() {
           </div>
           <div className="clients-grid">
             {clients.map((c) => (
-              <div key={c} className="client-cell">{c}</div>
+              <div key={c.name} className="client-cell">
+                <Image
+                  src={c.logo}
+                  alt={c.name}
+                  width={160}
+                  height={80}
+                  className="client-logo-img"
+                  unoptimized
+                />
+              </div>
             ))}
           </div>
         </div>
