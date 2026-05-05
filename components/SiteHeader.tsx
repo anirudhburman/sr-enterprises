@@ -42,14 +42,17 @@ export function SiteHeader() {
               Get a quote →
             </Link>
           </nav>
-          <button
-            className="nav-hamburger"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen((o) => !o)}
-          >
-            {open ? "✕" : "☰"}
-          </button>
+          <div className="nav-mobile-controls">
+            <ThemeToggle />
+            <button
+              className="nav-hamburger"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              onClick={() => setOpen((o) => !o)}
+            >
+              {open ? "✕" : "☰"}
+            </button>
+          </div>
         </div>
         <nav className={`nav-mobile${open ? " open" : ""}`} aria-label="Mobile navigation">
           {links.map((l) => (

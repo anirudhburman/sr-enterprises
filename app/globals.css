@@ -168,8 +168,14 @@ a {
 }
 
 /* HAMBURGER */
-.nav-hamburger {
+.nav-mobile-controls {
   display: none;
+  margin-left: auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-hamburger {
   background: none;
   border: 1.5px solid var(--ink);
   color: var(--ink);
@@ -1045,6 +1051,11 @@ main {
 
   .service-card {
     border-right: none !important;
+    border-bottom: 1.5px solid var(--ink) !important;
+  }
+
+  .service-card:last-child {
+    border-bottom: none !important;
   }
 
   .footer-grid {
@@ -1076,8 +1087,8 @@ main {
     display: none;
   }
 
-  .nav-hamburger {
-    display: block;
+  .nav-mobile-controls {
+    display: flex;
   }
 
   .hero-h1 {
