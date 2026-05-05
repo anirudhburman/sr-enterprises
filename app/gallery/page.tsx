@@ -4,21 +4,39 @@ import { MasonryProjectGrid } from "@/components/MasonryProjectGrid";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Masonry style portfolio gallery of acrylic fabrication, signage, podium, UV printing, and trophy projects completed by SR Enterprises in Bangalore."
+    "Portfolio of acrylic fabrication, signage, UV printing, trophies and awards projects by SR Enterprises, Bengaluru.",
 };
 
 export default function GalleryPage() {
   return (
     <main>
-      <section className="hero">
+      {/* HERO */}
+      <section className="hero" style={{ paddingBottom: 48 }}>
         <div className="container">
-          <h1>Project Gallery</h1>
-          <p className="muted">
-            Browse our previous work in a masonry-style showcase with category filters.
+          <div className="hero-meta">
+            <span>/ Gallery</span>
+          </div>
+          <h1 className="hero-h1">
+            Selected<br />
+            <span
+              style={{
+                fontFamily: "var(--font-archivo-narrow)",
+                fontStyle: "italic",
+                fontWeight: 700,
+              }}
+            >
+              work.
+            </span>
+          </h1>
+          <p className="hero-blurb" style={{ marginTop: 32 }}>
+            A rolling selection from the workshop. Photographs to be added — labels describe
+            what&apos;s coming.
           </p>
         </div>
       </section>
-      <section>
+
+      {/* GALLERY */}
+      <section className="section" style={{ paddingTop: 0, borderTop: "none" }}>
         <div className="container">
           <MasonryProjectGrid />
         </div>

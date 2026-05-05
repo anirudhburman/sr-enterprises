@@ -1,46 +1,21 @@
+import Link from "next/link";
 import { services } from "@/content/services";
-import { Reveal } from "@/components/Reveal";
-import { Icon } from "@/components/Icon";
 
 type ServiceGridProps = {
   compact?: boolean;
 };
 
-type ServiceIconName = "acrylic" | "cnc" | "uvprint" | "signage" | "trophy" | "gift";
-
-const serviceIconMap: Record<string, ServiceIconName> = {
-  "acrylic-fabrication-bangalore": "acrylic",
-  "cnc-cutting-services-bangalore": "cnc",
-  "uv-printing-bangalore": "uvprint",
-  "signage-makers-bangalore": "signage",
-  "custom-trophies-bangalore": "trophy",
-  "podium-and-corporate-gifts-bangalore": "gift"
-};
-
 export function ServiceGrid({ compact = false }: ServiceGridProps) {
   return (
-    <div className="grid grid-3">
-      {services.map((service) => {
-        const iconName = serviceIconMap[service.slug] ?? "services";
-        return (
-          <Reveal key={service.slug}>
-            <article className={`card ${compact ? "service-card-compact" : ""}`}>
-              <div className={`service-icon-display${compact ? " service-icon-display-compact" : ""}`}>
-                <Icon name={iconName} className="icon-service" />
-              </div>
-              <span className="pill">{service.title}</span>
-              <p className="muted">{service.summary}</p>
-              <ul>
-                {(compact ? service.details.slice(0, 2) : service.details).map((line) => (
-                  <li key={line}>
-                    <Icon name="spark" className="icon-xs" /> {line}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </Reveal>
-        );
-      })}
+    <div className="services-grid">
+      {services.map((s, i) => (
+        <Link key={s.key} href="/services" className="service-card">
+          <span className="num">/{String(i + 1).padStart(2, "0")}</span>
+          <span className="service-card-arrow">↗</span>
+          <h3 style={compact ? { fontSize: 24 } : undefined}>{s.name}</h3>
+          <span className="tag">{s.tag}</span>
+        </Link>
+      ))}
     </div>
   );
 }

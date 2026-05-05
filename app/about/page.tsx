@@ -1,279 +1,132 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Icon } from "@/components/Icon";
-import { ClientLogoCycle } from "@/components/ClientLogoCycle";
+import { business, clients, processSteps } from "@/content/business";
 import { JsonLd } from "@/components/JsonLd";
-import {
-  business,
-  fabricationServices,
-  neighborhoodsServed
-} from "@/content/business";
 
 const site = business.siteUrl;
 
 export const metadata: Metadata = {
   title: "About Us — Bangalore Acrylic, CNC & UV Printing Workshop",
   description:
-    "SR Enterprises is a Bengaluru fabrication workshop: acrylic, laser and CNC cutting, UV printing, signage, trophies, photo frames, and custom gifts. Learn our story, process, and service area across Karnataka.",
-  keywords: [
-    "SR Enterprises",
-    "about acrylic fabrication Bangalore",
-    "CNC cutting workshop Bengaluru",
-    "UV printing company Karnataka",
-    "signage manufacturers Bangalore",
-    "custom trophies Bangalore",
-    "local fabrication partner India"
-  ],
-  alternates: {
-    canonical: `${site}/about`
-  },
+    "SR Enterprises is a Bengaluru fabrication workshop: acrylic, laser and CNC cutting, UV printing, signage, trophies, photo frames, and custom gifts. Learn our story, process, and capabilities.",
+  alternates: { canonical: `${site}/about` },
   openGraph: {
     title: "About SR Enterprises | Bengaluru Fabrication & Printing",
     description:
-      "Meet the team behind acrylic fabrication, precision cutting, UV printing, and signage for brands across Bangalore and Karnataka.",
+      "Meet the team behind acrylic fabrication, precision cutting, UV printing, and signage for brands across Bangalore.",
     url: `${site}/about`,
     siteName: business.name,
     type: "website",
-    locale: "en_IN"
+    locale: "en_IN",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "About SR Enterprises",
-    description:
-      "Bangalore-based workshop for acrylic, CNC, UV printing, signage, trophies, and custom gifts."
-  }
 };
 
 const breadcrumbLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: `${site}/`
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "About",
-      item: `${site}/about`
-    }
-  ]
-};
-
-const aboutPageLd = {
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  name: `About ${business.name}`,
-  description:
-    "Company background, fabrication capabilities, and service geography for SR Enterprises in Bengaluru, Karnataka.",
-  url: `${site}/about`,
-  mainEntity: {
-    "@id": `${site}/#localbusiness`
-  },
-  isPartOf: {
-    "@type": "WebSite",
-    name: business.name,
-    url: site
-  }
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    { "@type": "ListItem", position: 2, name: "About", item: `${site}/about` },
+  ],
 };
 
 export default function AboutPage() {
   return (
     <main>
       <JsonLd data={breadcrumbLd} />
-      <JsonLd data={aboutPageLd} />
 
+      {/* HERO */}
       <section className="hero">
         <div className="container">
-          <p className="fun-badge">
-            <Icon name="spark" className="icon-sm" /> Bengaluru workshop since day one
-          </p>
-          <h1>About SR Enterprises</h1>
-          <p className="muted about-hero-lead">
-            We are a <strong>Bangalore-based fabrication and printing team</strong> helping
-            retailers, corporates, institutions, and agencies turn ideas into physical products:
-            acrylic displays, precision-cut parts, illuminated signage, awards, photo frames, and
-            bespoke gifts. Our focus is consistent finishing, honest timelines, and clear
-            communication from first sketch to handover.
-          </p>
-        </div>
-      </section>
-
-      <section className="clients-strip-section" aria-label="Client brands">
-        <div className="container">
-          <ClientLogoCycle />
-        </div>
-      </section>
-
-      <section>
-        <div className="container about-two-col">
-          <div>
-            <h2 className="section-title">Our story</h2>
-            <p className="muted">
-              SR Enterprises grew from repeat workshop jobs into a full-service partner for teams
-              that need both craft and throughput. We combine hands-on bench experience with
-              production discipline so a single custom piece gets the same attention as a batch run
-              for an event or retail rollout.
-            </p>
-            <p className="muted">
-              Whether you arrive with CAD files, reference photos, or a rough sketch on paper, we
-              help you choose materials, thickness, joinery, and print methods that fit your
-              budget and where the piece will live—storefront, office, stage, or exhibition floor.
-            </p>
+          <div className="hero-meta">
+            <span>/ About</span>
           </div>
-          <article className="card fade-in-up">
-            <h3>
-              <Icon name="clock" className="icon-sm" /> At a glance
-            </h3>
-            <ul className="about-checklist muted">
-              <li>Acrylic, PVC, MDF, and allied sheet materials</li>
-              <li>Laser and CNC cutting for tight tolerances</li>
-              <li>UV printing for vibrant branding on flat surfaces</li>
-              <li>Signage, trophies, podiums, frames, and custom gifts</li>
-              <li>Support for agencies, brands, schools, and SMEs</li>
-            </ul>
-            <p style={{ marginTop: "1rem", marginBottom: 0 }}>
-              <Link href="/services" className="cta secondary">
-                View all services
-              </Link>
-            </p>
-          </article>
+          <h1 className="hero-h1">
+            A workshop<br />
+            <span className="outline it" style={{ fontFamily: "var(--font-archivo-narrow)", fontStyle: "italic" }}>
+              in Srirampura.
+            </span>
+          </h1>
         </div>
       </section>
 
-      <section>
+      {/* STORY */}
+      <section className="section" style={{ paddingTop: 0, borderTop: "none" }}>
         <div className="container">
-          <h2 className="section-title">What we make</h2>
-          <p className="muted">
-            These are the core capabilities clients rely on—often combined in one project (for
-            example UV-printed acrylic signage with CNC-routed letters).
-          </p>
-          <ul className="about-service-pills" aria-label="Core services">
-            {fabricationServices.map((label) => (
-              <li key={label}>
-                <span className="pill">{label}</span>
-              </li>
+          <div className="about-two-col">
+            <div className="about-text">
+              <p>
+                SR Enterprises is a Bengaluru fabrication studio that has been cutting, printing
+                and finishing for over a decade. We work with acrylic, wood, metal, ACP and most
+                rigid substrates that take a UV print.
+              </p>
+              <p>
+                The work ranges from a single trophy on someone&apos;s desk to backlit signage on
+                a retail façade. What ties it together is care: clean edges, true finishes, and a
+                delivery date that holds.
+              </p>
+              <p>
+                Everything is made in-house in our Hanumanthapura workshop — laser, CNC, UV
+                flatbed, fabrication bay and finishing under one roof. Nothing is outsourced.
+                That&apos;s why timelines don&apos;t slip.
+              </p>
+              <Link href="/contact" className="btn btn-primary" style={{ marginTop: 8 }}>
+                Get a quote →
+              </Link>
+            </div>
+            <div
+              className="img-placeholder"
+              style={{ height: 560 }}
+              aria-hidden="true"
+            >
+              <div className="img-placeholder-stripes" />
+              <span className="img-placeholder-label">ABOUT · Workshop floor or owner portrait</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-num">/ Process</span>
+            <div>
+              <h2 className="section-title">
+                Brief to<br />
+                <span className="it">delivery.</span>
+              </h2>
+            </div>
+          </div>
+          <div className="process-grid">
+            {processSteps.map((p) => (
+              <div key={p.n} className="process-step">
+                <div className="process-num">{p.n}</div>
+                <h4>{p.title}</h4>
+                <p>{p.body}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
-      <section>
+      {/* CLIENTS */}
+      <section className="section">
         <div className="container">
-          <h2 className="section-title">How we work with you</h2>
-          <ol className="about-steps">
-            <li className="card fade-in-up">
-              <h3>1. Brief &amp; feasibility</h3>
-              <p className="muted">
-                We clarify size, quantity, material, finish, installation context, and deadline.
-                If something is risky for transport or outdoor use, we say so early.
-              </p>
-            </li>
-            <li className="card fade-in-up">
-              <h3>2. Design support</h3>
-              <p className="muted">
-                Share vector files or dimensions—we advise on stroke widths for small text,
-                standoff depths, LED diffusion, and how print will read on your substrate.
-              </p>
-            </li>
-            <li className="card fade-in-up">
-              <h3>3. Production &amp; QC</h3>
-              <p className="muted">
-                Cutting, polishing, bonding, printing, and assembly happen in-house with
-                checkpoints before packing so you are not surprised at delivery.
-              </p>
-            </li>
-            <li className="card fade-in-up">
-              <h3>4. Delivery or pickup</h3>
-              <p className="muted">
-                We coordinate handover in Bangalore and can discuss dispatch across Karnataka when
-                the job allows safe packing.
-              </p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section>
-        <div className="container">
-          <h2 className="section-title">Where we operate (service area)</h2>
-          <p className="muted">
-            Our workshop serves <strong>{business.primaryCity}</strong>,{" "}
-            <strong>{business.primaryRegion}</strong>, and nearby industrial and commercial belts.
-            Typical work includes pickup and delivery within the wider Bangalore metropolitan region
-            and projects that can be shipped securely elsewhere in the state.
-          </p>
-          <p className="muted">
-            We regularly support clients around{" "}
-            {neighborhoodsServed.slice(0, -1).join(", ")}, and{" "}
-            {neighborhoodsServed[neighborhoodsServed.length - 1]}—plus
-            other localities on request. Coverage aligns with our logistics:{" "}
-            <strong>{business.areaServed}</strong>.
-          </p>
-          <p className="muted" style={{ marginBottom: 0 }}>
-            <Link href="/contact" className="cta">
-              <Icon name="contact" className="icon-sm" /> Discuss your location &amp; timeline
-            </Link>
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <div className="container grid grid-3">
-          <article className="card fade-in-up">
-            <h3>
-              <Icon name="rocket" className="icon-sm" /> Our mission
-            </h3>
-            <p className="muted">
-              Build long-term relationships through dependable output, fair pricing, and
-              responsive updates—so your marketing, retail, or events team can trust the
-              fabrication layer.
-            </p>
-          </article>
-          <article className="card fade-in-up">
-            <h3>
-              <Icon name="shield" className="icon-sm" /> What we value
-            </h3>
-            <p className="muted">
-              Material honesty, transparent timelines, and ownership from sample to bulk. We would
-              rather reset a batch than ship something we would not put our name on.
-            </p>
-          </article>
-          <article className="card fade-in-up">
-            <h3>
-              <Icon name="industry" className="icon-sm" /> Who we work with
-            </h3>
-            <p className="muted">
-              Retail and D2C brands, corporate facilities, schools and colleges, event and
-              exhibition partners, hospitality groups, and manufacturing vendors who need a
-              reliable Bangalore fabrication desk.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <div className="container">
-          <article className="card fade-in-up about-cta-card">
-            <h2 className="section-title" style={{ marginBottom: "0.5rem" }}>
-              Ready to plan your next job?
-            </h2>
-            <p className="muted">
-              Send dimensions, reference images, or call us—we will reply with material options
-              and a realistic schedule.
-            </p>
-            <p style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: 0 }}>
-              <Link href="/contact" className="cta">
-                Get a quote
-              </Link>
-              <Link href="/gallery" className="cta secondary">
-                See gallery
-              </Link>
-            </p>
-          </article>
+          <div className="section-head">
+            <span className="section-num">/ Clients</span>
+            <div>
+              <h2 className="section-title">
+                Trusted by<br />
+                <span className="it">teams that ship.</span>
+              </h2>
+            </div>
+          </div>
+          <div className="clients-grid">
+            {clients.map((c) => (
+              <div key={c} className="client-cell">{c}</div>
+            ))}
+          </div>
         </div>
       </section>
     </main>

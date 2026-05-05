@@ -2,52 +2,70 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { Icon } from "@/components/Icon";
 
 const links = [
-  { href: "/", label: "Home", icon: "home" as const },
-  { href: "/about", label: "About", icon: "about" as const },
-  { href: "/services", label: "Services", icon: "services" as const },
-  { href: "/gallery", label: "Gallery", icon: "gallery" as const },
-  { href: "/contact", label: "Contact", icon: "contact" as const }
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const close = () => setOpen(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header className="site-header">
-      <div className="container header-inner">
-        <Link className="brand" href="/" onClick={close}>
-          SR Enterprises
-        </Link>
-        <nav className={`nav${open ? " nav-open" : ""}`} aria-label="Primary navigation">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href} className="nav-link-fun" onClick={close}>
-              <Icon name={link.icon} className="icon-sm" />
-              {link.label}
+      <div className="container">
+        <div className="nav-row">
+          <Link href="/" className="wordmark" onClick={() => setOpen(false)}>
+            SR<span className="wordmark-dot" />ENTERPRISES
+          </Link>
+          <nav className="nav-links" aria-label="Primary navigation">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`nav-link ${isActive(l.href) ? "active" : ""}`}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <ThemeToggle />
+            <Link href="/contact" className="nav-cta">
+              Get a quote →
             </Link>
-          ))}
-          <Link className="cta nav-cta-mobile" href="/contact" onClick={close}>
-            Get a Quote
-          </Link>
-        </nav>
-        <div className="header-actions">
-          <ThemeToggle />
-          <Link className="cta header-cta-desktop" href="/contact">
-            Get a Quote
-          </Link>
+          </nav>
           <button
             className="nav-hamburger"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
           >
-            <Icon name={open ? "close" : "menu"} className="icon-sm" />
+            {open ? "✕" : "☰"}
           </button>
         </div>
+        <nav className={`nav-mobile${open ? " open" : ""}`} aria-label="Mobile navigation">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`nav-link ${isActive(l.href) ? "active" : ""}`}
+              onClick={() => setOpen(false)}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link href="/contact" className="nav-cta" onClick={() => setOpen(false)}>
+            Get a quote →
+          </Link>
+        </nav>
       </div>
     </header>
   );

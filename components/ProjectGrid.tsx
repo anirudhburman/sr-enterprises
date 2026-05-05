@@ -1,48 +1,33 @@
 "use client";
 
-import Image from "next/image";
-import { Reveal } from "@/components/Reveal";
 import { useProjectFilter } from "@/hooks/useProjectFilter";
-
-const orientationRatio = {
-  landscape: "4 / 3",
-  portrait: "3 / 4",
-  square: "1 / 1"
-} as const;
 
 export function ProjectGrid() {
   const { active, setActive, filtered, categories } = useProjectFilter();
 
   return (
     <>
-      <div style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap", marginBottom: "1rem" }}>
+      <div className="gallery-filters">
         {categories.map((category) => (
           <button
             key={category}
             type="button"
             onClick={() => setActive(category)}
-            className="pill"
-            style={{ cursor: "pointer", opacity: category === active ? 1 : 0.75 }}
+            className={`btn btn-ghost ${category === active ? "active" : ""}`}
           >
             {category}
           </button>
         ))}
       </div>
-      <div className="grid grid-3">
-        {filtered.map((project) => (
-          <Reveal key={project.title}>
-            <article className="card">
-              <Image
-                src={project.image}
-                alt={`${project.title} by SR Enterprises`}
-                width={800}
-                height={600}
-                className="gallery-image"
-                style={{ aspectRatio: orientationRatio[project.orientation] }}
-              />
-              <p className="pill">{project.category}</p>
-            </article>
-          </Reveal>
+      <div className="gallery-grid">
+        {filtered.map((item, i) => (
+          <div key={i} className="gallery-card" style={{ gridColumn: "span 4", gridRow: "span 3" }}>
+            <div className="gallery-stripes" />
+            <div className="gallery-meta">
+              <span className="gallery-label">{item.label}</span>
+              <span className="gallery-cat">{item.category}</span>
+            </div>
+          </div>
         ))}
       </div>
     </>

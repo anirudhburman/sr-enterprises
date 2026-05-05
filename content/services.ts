@@ -1,91 +1,100 @@
 export type ServiceItem = {
-  title: string;
-  slug: string;
-  summary: string;
-  details: string[];
-  image: string;
+  key: string;
+  name: string;
+  tag: string;
+  blurb: string;
+  bullets: string[];
 };
 
 export const services: ServiceItem[] = [
   {
-    title: "Acrylic Fabrication",
-    slug: "acrylic-fabrication-bangalore",
-    summary: "Custom acrylic products for retail, office, events, and interiors.",
-    image: "/images/service-acrylic.svg",
-    details: [
-      "Laser-finished acrylic display units and panels.",
-      "Custom dimensions, colors, and edge finishes.",
-      "Low and bulk quantity production."
-    ]
+    key: "acrylic",
+    name: "Acrylic Fabrication",
+    tag: "Cut. Bend. Polish. Assemble.",
+    blurb: "Custom acrylic display stands, retail fixtures, sneeze guards, partitions and bespoke fabrications — built to spec from cast and extruded acrylic sheets.",
+    bullets: ["Edge polishing & flame finishing", "Solvent & UV bonding", "Thermoforming & bending", "Up to 25mm sheet thickness"],
   },
   {
-    title: "CNC Cutting",
-    slug: "cnc-cutting-services-bangalore",
-    summary: "Precision CNC cutting for acrylic, PVC, MDF, and allied materials.",
-    image: "/images/service-acrylic.svg",
-    details: [
-      "Accurate CAD-based cutting and shaping.",
-      "Fast turnaround for repeat and one-off jobs.",
-      "Production support for manufacturers and agencies."
-    ]
+    key: "laser",
+    name: "Laser Cutting",
+    tag: "Precision cuts on acrylic, MDF, ply.",
+    blurb: "CO₂ laser cutting and engraving for clean edges and intricate detail. Production runs and one-offs welcomed.",
+    bullets: ["±0.1mm tolerance", "Bed size up to 1300×900mm", "Vector engraving & raster", "Fast turnaround on small batches"],
   },
   {
-    title: "UV Printing",
-    slug: "uv-printing-bangalore",
-    summary: "High-resolution UV print on acrylic and flat surfaces.",
-    image: "/images/service-acrylic.svg",
-    details: [
-      "Vibrant and durable print output.",
-      "Branding for signages, awards, and displays.",
-      "Suitable for indoor and selected outdoor use."
-    ]
+    key: "cnc",
+    name: "CNC Cutting",
+    tag: "Routed letters, panels, profiles.",
+    blurb: "CNC routing for ACP, MDF, HDF, PVC and aluminium composite — ideal for 3D channel letters and signage substrates.",
+    bullets: ["3-axis routing", "V-groove & pocketing", "Channel-letter fabrication", "Panel sizing & finishing"],
   },
   {
-    title: "Signage Solutions",
-    slug: "signage-makers-bangalore",
-    summary: "Complete signage manufacturing including acrylic and illuminated boards.",
-    image: "/images/service-acrylic.svg",
-    details: [
-      "Shop sign boards and office signages.",
-      "Acrylic letters, logo signages, and custom shapes.",
-      "Fabrication support with quality finishing."
-    ]
+    key: "uv",
+    name: "UV Printing",
+    tag: "Vivid direct-to-substrate prints.",
+    blurb: "Photo-quality UV flatbed printing onto acrylic, wood, metal, glass and more. Scratch-resistant, weatherproof, full CMYK + white.",
+    bullets: ["White-ink layers", "Up to 2440×1220mm bed", "Direct-to-object", "300+ DPI photo quality"],
   },
   {
-    title: "Trophies and Awards",
-    slug: "custom-trophies-bangalore",
-    summary: "Elegant acrylic trophies, mementos, and recognition products.",
-    image: "/images/service-acrylic.svg",
-    details: [
-      "Corporate and event trophy design.",
-      "Custom branding and names with precision engraving.",
-      "Premium finishing with quick delivery options."
-    ]
+    key: "signage",
+    name: "Signage",
+    tag: "Backlit, 3D, neon, façade.",
+    blurb: "End-to-end signage — design, fabrication, electrical, installation. From shopfront 3D letters to backlit acrylic and façade boards.",
+    bullets: ["LED backlit & edge-lit", "Stainless / acrylic 3D letters", "Façade & shopfront boards", "Site survey + installation"],
   },
   {
-    title: "Podiums and Corporate Gifts",
-    slug: "podium-and-corporate-gifts-bangalore",
-    summary: "Functional and brand-focused podiums, gifts, and presentation pieces.",
-    image: "/images/service-acrylic.svg",
-    details: [
-      "Acrylic and mixed-material podium solutions.",
-      "Custom corporate gifting products.",
-      "Designed for conferences, retail, and business events."
-    ]
-  }
+    key: "trophies",
+    name: "Trophies",
+    tag: "Awards that earn a desk spot.",
+    blurb: "Acrylic and crystal trophies for sports, corporate and academic events. Personalised engraving and UV-printed graphics.",
+    bullets: ["Bespoke shapes", "UV-printed logos", "Bulk event orders", "Bases & packaging"],
+  },
+  {
+    key: "frames",
+    name: "Photo Frames",
+    tag: "Acrylic & wood, framed properly.",
+    blurb: "Acrylic block frames, magnetic frames, and traditional wood frames — single units or wedding & event volumes.",
+    bullets: ["Acrylic blocks", "Magnetic & standoff", "Custom sizes", "Volume pricing"],
+  },
+  {
+    key: "gifts",
+    name: "Custom Gifts",
+    tag: "Branded, boxed, thoughtful.",
+    blurb: "Corporate gifting — desk accessories, name plates, branded keepsakes — laser-cut, UV-printed and packaged.",
+    bullets: ["Logo-matched colourways", "Mixed-material builds", "Bulk + individual", "Gift packaging available"],
+  },
+  {
+    key: "awards",
+    name: "Corporate Awards",
+    tag: "Recognition done right.",
+    blurb: "End-of-year, employee recognition and milestone awards. Designed with you, manufactured in-house.",
+    bullets: ["Design + production", "Engraving & UV print", "Branded packaging", "Repeat-order memory"],
+  },
 ];
 
 export const serviceFaqs = [
   {
-    q: "Do you take custom design orders?",
-    a: "Yes. We work on custom dimensions, branding, and design references for almost all services."
+    q: "What's the minimum order quantity?",
+    a: "There isn't one. We do single trophies and 500-piece corporate gifting runs with the same care. Pricing scales with volume.",
   },
   {
-    q: "Do you serve only Bangalore?",
-    a: "Our core service area is Bangalore, and we can support nearby regions based on project scope."
+    q: "How long does a typical job take?",
+    a: "Small jobs — laser cuts, single trophies, photo frames — usually 2–4 working days. Signage installations and large UV prints are scoped after a brief.",
   },
   {
-    q: "How quickly can you deliver?",
-    a: "Timelines depend on quantity and complexity, but we prioritize reliable and fast turnaround."
-  }
+    q: "Do you ship outside Bengaluru?",
+    a: "Yes. We regularly courier across India for trophies, awards and gifting. Signage installations are Bengaluru and surrounding areas.",
+  },
+  {
+    q: "Can I bring my own design?",
+    a: "Absolutely. Send a vector file (AI, PDF, SVG, DXF) or a clean reference image. We'll flag anything that needs adjusting before production.",
+  },
+  {
+    q: "Do you provide installation for signage?",
+    a: "Yes — site survey, fabrication, electricals and mounting are handled in-house for shopfront and façade signage in Bengaluru.",
+  },
+  {
+    q: "What materials do you work with?",
+    a: "Cast and extruded acrylic, MDF, ply, ACP, aluminium composite, stainless steel, PVC, and most rigid substrates that take a UV print.",
+  },
 ];

@@ -1,42 +1,80 @@
 import type { Metadata } from "next";
-import { ServiceGrid } from "@/components/ServiceGrid";
-import { serviceFaqs } from "@/content/services";
-import { Icon } from "@/components/Icon";
+import Link from "next/link";
+import { services } from "@/content/services";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore acrylic fabrication, CNC cutting, UV printing, signage making, trophies, podium fabrication, and corporate gift services by SR Enterprises in Bangalore."
+    "Acrylic fabrication, laser cutting, CNC cutting, UV printing, signage, trophies, photo frames, custom gifts and corporate awards — all in-house at SR Enterprises, Bengaluru.",
 };
 
 export default function ServicesPage() {
   return (
     <main>
+      {/* HERO */}
       <section className="hero">
         <div className="container">
-          <h1>Services</h1>
-          <p className="muted">
-            End-to-end acrylic and branding fabrication services for businesses in Bangalore.
-            We support custom development, repeat production, and urgent requirements
-            with transparent communication.
+          <div className="hero-meta">
+            <span>/ Services</span>
+          </div>
+          <h1 className="hero-h1">
+            Everything<br />
+            <span className="accent">we make.</span>
+          </h1>
+          <p className="hero-blurb" style={{ marginTop: 32 }}>
+            Nine in-house disciplines. Combine them as you need — most projects use two or three.
           </p>
         </div>
       </section>
-      <section>
+
+      {/* SERVICES LIST */}
+      <section className="section" style={{ paddingTop: 32, borderTop: "none" }}>
         <div className="container">
-          <ServiceGrid />
+          {services.map((s, i) => (
+            <div key={s.key} className="services-list-item">
+              <div className="services-list-row">
+                <div>
+                  <span className="section-num">/{String(i + 1).padStart(2, "0")}</span>
+                  <div
+                    style={{
+                      marginTop: 12,
+                      fontFamily: "var(--font-archivo-narrow)",
+                      fontStyle: "italic",
+                      color: "var(--muted)",
+                      fontSize: 16,
+                    }}
+                  >
+                    {s.tag}
+                  </div>
+                </div>
+                <h3 className="services-list-name">{s.name}</h3>
+                <div>
+                  <p className="services-list-blurb">{s.blurb}</p>
+                  <ul className="services-bullets">
+                    {s.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
-      <section>
+
+      {/* CTA */}
+      <section className="section">
         <div className="container">
-          <h2 className="section-title"><Icon name="spark" className="icon-sm" /> Frequently Asked Questions</h2>
-          <div className="grid grid-3">
-            {serviceFaqs.map((faq) => (
-              <article key={faq.q} className="card fade-in-up">
-                <h3>{faq.q}</h3>
-                <p className="muted">{faq.a}</p>
-              </article>
-            ))}
+          <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
+            <h2
+              className="section-title"
+              style={{ margin: 0, fontSize: "clamp(32px, 4vw, 56px)" }}
+            >
+              Ready to start?
+            </h2>
+            <Link href="/contact" className="btn btn-primary" style={{ marginLeft: "auto" }}>
+              Request a quote →
+            </Link>
           </div>
         </div>
       </section>
