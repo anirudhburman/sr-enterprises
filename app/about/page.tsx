@@ -124,7 +124,7 @@ export default function AboutPage() {
           </div>
           <div className="clients-grid">
             {clients.map((c) => (
-              <div key={c} className="client-cell">{c}</div>
+              <div key={c.name} className="client-cell">{c.name}</div>
             ))}
           </div>
         </div>

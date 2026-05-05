@@ -1,7 +1,0 @@
-<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="900" fill="#0E1628"/>
-  <rect x="170" y="180" width="860" height="540" rx="24" fill="#142341" stroke="#4A8EF8" stroke-width="8"/>
-  <rect x="280" y="280" width="300" height="220" rx="12" fill="#8FC2FF"/>
-  <rect x="620" y="280" width="300" height="220" rx="12" fill="#5B9CFF"/>
-  <text x="600" y="780" text-anchor="middle" fill="#DCEBFF" font-family="Arial, sans-serif" font-size="52" font-weight="700">Acrylic Fabrication</text>
-</svg>
