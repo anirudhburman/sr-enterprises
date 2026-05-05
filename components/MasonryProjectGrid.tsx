@@ -1,48 +1,56 @@
 "use client";
 
-import Image from "next/image";
-import { Reveal } from "@/components/Reveal";
-import { useProjectFilter } from "@/hooks/useProjectFilter";
+import { useState, useMemo } from "react";
+import { projects } from "@/content/projects";
 
-const imageDims = {
-  landscape: { width: 1200, height: 900 },
-  portrait: { width: 900, height: 1200 },
-  square: { width: 1000, height: 1000 }
-} as const;
+const SPANS = [
+  { col: 6, row: 4 }, { col: 6, row: 4 },
+  { col: 4, row: 3 }, { col: 4, row: 3 }, { col: 4, row: 3 },
+  { col: 8, row: 4 }, { col: 4, row: 4 },
+  { col: 4, row: 3 }, { col: 4, row: 3 }, { col: 4, row: 3 },
+  { col: 6, row: 3 }, { col: 6, row: 3 },
+];
 
 export function MasonryProjectGrid() {
-  const { active, setActive, filtered, categories } = useProjectFilter();
+  const [filter, setFilter] = useState("All");
+
+  const categories = useMemo(
+    () => ["All", ...Array.from(new Set(projects.map((p) => p.category)))],
+    []
+  );
+
+  const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
     <>
-      <div style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap", marginBottom: "1rem" }}>
-        {categories.map((category) => (
+      <div className="gallery-filters">
+        {categories.map((c) => (
           <button
-            key={category}
-            type="button"
-            onClick={() => setActive(category)}
-            className="pill"
-            style={{ cursor: "pointer", opacity: category === active ? 1 : 0.75 }}
+            key={c}
+            className={`btn btn-ghost ${filter === c ? "active" : ""}`}
+            onClick={() => setFilter(c)}
           >
-            {category}
+            {c}
           </button>
         ))}
       </div>
-      <div className="masonry-grid">
-        {filtered.map((project) => (
-          <Reveal key={`${project.title}-masonry`} className="masonry-item">
-            <article className="card">
-              <Image
-                src={project.image}
-                alt={`${project.title} by SR Enterprises`}
-                width={imageDims[project.orientation].width}
-                height={imageDims[project.orientation].height}
-                className="masonry-image"
-              />
-              <p className="pill">{project.category}</p>
-            </article>
-          </Reveal>
-        ))}
+      <div className="gallery-grid">
+        {filtered.map((item, i) => {
+          const sp = SPANS[i % SPANS.length];
+          return (
+            <div
+              key={i}
+              className="gallery-card"
+              style={{ gridColumn: `span ${sp.col}`, gridRow: `span ${sp.row}` }}
+            >
+              <div className="gallery-stripes" />
+              <div className="gallery-meta">
+                <span className="gallery-label">{item.label}</span>
+                <span className="gallery-cat">{item.category}</span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </>
   );

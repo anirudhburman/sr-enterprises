@@ -1,61 +1,89 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo, Archivo_Narrow, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LocalBusinessSchema } from "@/components/LocalBusinessSchema";
-import { ScrollAnimator } from "@/components/ScrollAnimator";
 import { business } from "@/content/business";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-archivo",
+});
+
+const archivoNarrow = Archivo_Narrow({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+  variable: "--font-archivo-narrow",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-jetbrains",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://srenterprises.in"),
   title: {
-    default: "SR Enterprises | Acrylic Fabrication and CNC Cutting in Bangalore",
-    template: "%s | SR Enterprises"
+    default: "SR Enterprises | Acrylic Fabrication, Trophies & UV Printing in Bengaluru",
+    template: "%s | SR Enterprises",
   },
   description:
-    "SR Enterprises provides acrylic fabrication, CNC cutting, UV printing, signage, trophies, podiums, and custom display solutions in Bangalore.",
+    "SR Enterprises is a Bengaluru fabrication studio: acrylic fabrication, laser & CNC cutting, UV printing, signage, trophies and corporate awards. In-house from brief to delivery.",
+  keywords: [
+    "acrylic fabrication Bangalore",
+    "trophies Bangalore",
+    "UV printing Bangalore",
+    "signage Bangalore",
+    "laser cutting Bengaluru",
+    "corporate awards",
+    "custom gifts",
+    "CNC cutting",
+  ],
   openGraph: {
-    title: "SR Enterprises",
+    title: "SR Enterprises — Acrylic, Signage & Print · Bengaluru",
     description:
-      "Acrylic fabrication, CNC cutting, UV printing, signage, trophies, podiums, and custom work in Bangalore.",
+      "Acrylic fabrication, laser & CNC cutting, UV printing, signage and trophies — designed and built in Bengaluru.",
     url: "https://srenterprises.in",
     siteName: "SR Enterprises",
     type: "website",
-    locale: "en_IN"
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SR Enterprises — Bengaluru fabrication studio",
+    description:
+      "Acrylic, laser, CNC, UV printing, signage, trophies. In-house in Bengaluru.",
   },
   alternates: {
-    canonical: "https://srenterprises.in"
-  }
+    canonical: "https://srenterprises.in",
+  },
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" suppressHydrationWarning>
+    <html
+      lang="en-IN"
+      suppressHydrationWarning
+      className={`${archivo.variable} ${archivoNarrow.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var t = localStorage.getItem('theme') || 'dark';
-                  document.documentElement.setAttribute('data-theme', t);
-                } catch (e) {
-                  document.documentElement.setAttribute('data-theme', 'dark');
-                }
-              })();
-            `
+            __html: `(function(){try{var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`,
           }}
         />
       </head>
-      <body className={inter.className}>
-        <ScrollAnimator />
+      <body>
         <LocalBusinessSchema />
         <SiteHeader />
         {children}
@@ -67,8 +95,8 @@ export default function RootLayout({
           rel="noreferrer"
           aria-label="Chat with SR Enterprises on WhatsApp"
         >
-          <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          <svg viewBox="0 0 32 32" fill="white" width="30" height="30" aria-hidden="true">
+            <path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L0 32l8.5-2.5c2.2 1.2 4.8 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zM16 28.5c-2.4 0-4.7-.7-6.7-1.9l-.5-.3-5 1.5 1.5-4.9-.3-.5C3.7 20.4 3 18.2 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.5-13 12.5zm7.2-9.4c-.4-.2-2.3-1.1-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.7c-.3 0-.7.1-1 .5s-1.3 1.3-1.3 3.1 1.3 3.6 1.5 3.9c.2.2 2.6 4 6.4 5.6 2.3 1 3.2 1.1 4.4.9.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z" />
           </svg>
         </a>
       </body>

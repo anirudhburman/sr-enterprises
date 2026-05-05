@@ -2,76 +2,84 @@
 
 import { useState } from "react";
 import { business } from "@/content/business";
-import { Icon } from "@/components/Icon";
+import { services } from "@/content/services";
 
 export function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    service: services[0].name,
+    message: "",
+  });
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("sending");
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    data.append("_subject", "New Inquiry — SR Enterprises Website");
-    try {
-      const res = await fetch(`https://formsubmit.co/ajax/${business.email}`, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: data,
-      });
-      if (res.ok) {
-        setStatus("sent");
-        form.reset();
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-  }
+    const subject = `Quote request — ${form.service}`;
+    const body = `Name: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email}\nService: ${form.service}\n\nProject details:\n${form.message}`;
+    window.location.href = `mailto:${business.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   return (
-    <article className="card fade-in-up">
-      <h2>
-        <Icon name="spark" className="icon-sm" /> Quick Inquiry
-      </h2>
-      {status === "sent" ? (
-        <p style={{ color: "var(--brand-blue)" }}>
-          Thank you! We will get back to you shortly.
-        </p>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <p>
-            <label htmlFor="contact-name">Name</label>
-            <br />
-            <input id="contact-name" name="name" required className="form-input" />
-          </p>
-          <p>
-            <label htmlFor="contact-phone">Phone</label>
-            <br />
-            <input id="contact-phone" name="phone" required className="form-input" />
-          </p>
-          <p>
-            <label htmlFor="contact-message">Requirement</label>
-            <br />
-            <textarea
-              id="contact-message"
-              name="message"
-              required
-              rows={4}
-              className="form-textarea"
-            />
-          </p>
-          <button className="cta" type="submit" disabled={status === "sending"}>
-            {status === "sending" ? "Sending…" : "Send Inquiry"}
-          </button>
-          {status === "error" && (
-            <p className="muted" style={{ marginTop: "0.6rem", fontSize: "0.9rem" }}>
-              Something went wrong. Please reach us via WhatsApp or email directly.
-            </p>
-          )}
-        </form>
-      )}
-    </article>
+    <div className="quote-form">
+      <h3>Request a quote</h3>
+      <form onSubmit={handleSubmit} style={{ display: "grid", gap: 16 }}>
+        <div className="field">
+          <label htmlFor="cf-name">Your name</label>
+          <input
+            id="cf-name"
+            required
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-phone">Phone</label>
+          <input
+            id="cf-phone"
+            required
+            value={form.phone}
+            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-email">Email (optional)</label>
+          <input
+            id="cf-email"
+            type="email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="cf-service">Service</label>
+          <select
+            id="cf-service"
+            value={form.service}
+            onChange={(e) => setForm({ ...form, service: e.target.value })}
+          >
+            {services.map((s) => (
+              <option key={s.key}>{s.name}</option>
+            ))}
+            <option>Other / multiple</option>
+          </select>
+        </div>
+        <div className="field">
+          <label htmlFor="cf-message">Project details</label>
+          <textarea
+            id="cf-message"
+            rows={5}
+            required
+            value={form.message}
+            onChange={(e) => setForm({ ...form, message: e.target.value })}
+            placeholder="Quantities, materials, sizes, deadline…"
+          />
+        </div>
+        <button className="btn btn-primary" type="submit" style={{ marginTop: 8 }}>
+          Send via email →
+        </button>
+        <p className="form-note">Opens your mail app — no data stored on this site.</p>
+      </form>
+    </div>
   );
 }
