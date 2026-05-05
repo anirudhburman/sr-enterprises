@@ -58,14 +58,14 @@ export const fabricationServices = [
 ] as const;
 
 export const clients = [
-  { name: "Daimler",    logo: "/images/daimler.png" },
-  { name: "Decathlon",  logo: "/images/decathlon.png" },
-  { name: "Fischer",    logo: "/images/fischer.png" },
-  { name: "Micelio",   logo: "/images/micelio.png" },
-  { name: "SCG",        logo: "/images/SCG.png" },
-  { name: "Alcon",      logo: "/images/alcon.png" },
-  { name: "Kriya",      logo: "/images/kriya.png" },
-  { name: "Licious",    logo: "/images/Licious.png" },
+  { name: "Daimler",    logo: "images/daimler.png" },
+  { name: "Decathlon",  logo: "images/decathlon.png" },
+  { name: "Fischer",    logo: "images/fischer.png" },
+  { name: "Micelio",   logo: "images/micelio.png" },
+  { name: "SCG",        logo: "images/SCG.png" },
+  { name: "Alcon",      logo: "images/alcon.png" },
+  { name: "Kriya",      logo: "images/kriya.png" },
+  { name: "Licious",    logo: "images/Licious.png" },
 ];
 
 export const processSteps = [
