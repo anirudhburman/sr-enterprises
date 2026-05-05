@@ -124,7 +124,10 @@ export default function AboutPage() {
           </div>
           <div className="clients-grid">
             {clients.map((c) => (
-              <div key={c.name} className="client-cell">{c.name}</div>
+              <div key={c.name} className="client-cell">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/${c.logo}`} alt={c.name} className="client-logo-img" />
+              </div>
             ))}
           </div>
         </div>
